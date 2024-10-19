@@ -22,9 +22,10 @@ const SignUpPage = () => {
       const response = await axios.post("api/users/signup", user);
       console.log("Signup success", response.data);
       router.push("/login");
-    } catch (error: any) {
+    } catch (error) {
+      const err = error as Error;
       console.log("SignUp Failed");
-      toast.error(error.message);
+      toast.error(err.message);
     }
   };
 

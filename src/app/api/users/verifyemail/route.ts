@@ -30,10 +30,12 @@ export async function POST(request: NextRequest) {
       { message: "Email Verified Successfully", success: true },
       { status: 500 }
     );
-  } catch (error: any) {
+  } catch (error) {
+    const err = error as Error;
+
     return NextResponse.json(
       {
-        error: error.message,
+        error: err.message,
       },
       { status: 500 }
     );

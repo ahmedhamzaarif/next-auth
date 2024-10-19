@@ -50,7 +50,8 @@ export const sendEmail = async ({ email, emailType, userId }: any) => {
 
     const mailResponse = transporter.sendMail(mailOptions);
     return mailResponse;
-  } catch (error: any) {
-    throw new Error(error.message);
+  } catch (error) {
+    const err = error as Error;
+    throw new Error(err.message);
   }
 };

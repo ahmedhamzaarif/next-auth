@@ -14,9 +14,10 @@ const ProfilePage = () => {
       const res = await axios.get("/api/users/me");
       console.log(res.data);
       setData(res.data.data._id);
-    } catch (error: any) {
-      console.log(error.message);
-      toast.error(error.message);
+    } catch (error) {
+      const err = error as Error;
+      console.log(err.message);
+      toast.error(err.message);
     }
   };
 
@@ -25,9 +26,10 @@ const ProfilePage = () => {
       await axios.get("/api/users/logout");
       toast.success("Logout Success");
       router.push("/login");
-    } catch (error: any) {
-      console.log(error.message);
-      toast.error(error.message);
+    } catch (error) {
+      const err = error as Error;
+      console.log(err.message);
+      toast.error(err.message);
     }
   };
 

@@ -3,7 +3,7 @@ import { connect } from '@/dbConfig/dbConfig'
 
 connect()
 
-export async function GET(request: NextRequest) {
+export async function GET() {
     try {
         const response = NextResponse.json({
             message: "Logout successfully",
@@ -16,8 +16,9 @@ export async function GET(request: NextRequest) {
         })
 
         return response
-    } catch (error: any) {
-        return NextResponse.json({error: error.message}, {status: 500})
+    } catch (error) {
+        const err = error as Error;
+        return NextResponse.json({error: err.message}, {status: 500})
     }
 
 }
