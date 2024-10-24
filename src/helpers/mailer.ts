@@ -3,7 +3,13 @@ import nodemailer from "nodemailer";
 import bcryptjs from "bcryptjs";
 // uuid library can be used for hashed token
 
-export const sendEmail = async ({ email, emailType, userId }: any) => {
+interface SendEmailParams {
+  email: string;
+  emailType: string;
+  userId: string;
+}
+
+export const sendEmail = async ({ email, emailType, userId }: SendEmailParams) => {
   try {
     const hashedToken = await bcryptjs.hash(userId.toString(), 10);
 

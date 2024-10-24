@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
             savedUser
         })
 
-    } catch (error: any) {
+    } catch (error) {
         const err = error as Error;
         return NextResponse.json({error: err.message}, {status: 500})
     }
